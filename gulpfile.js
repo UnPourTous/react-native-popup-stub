@@ -16,8 +16,8 @@ gulp.task('check:git', shell.task([
 
 gulp.task('dev:syncLib', shell.task([
   'rm -rf node_modules/' + libPackageInfo.name,
-  'npm install ' + libPackageInfo.name
-], {cwd: './example'}))
+  'yarn '
+], {cwd: './example', ignoreErrors: true}))
 
 gulp.task('run:storybook', shell.task([
   'npm run storybook'
