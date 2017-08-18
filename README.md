@@ -7,7 +7,8 @@
 Popup global controller:
 
 - Handles popup animations
-- Remove old popup that has the same zIndex automatically
+- Regard the same `zIndex` components as same layer, remove old popup that has the same zIndex automatically
+- Make it easy too implement your own popup like Dialog, Toast, ActionSheet
 
 Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
@@ -18,7 +19,30 @@ Animation is based on [react-native-animatable](https://github.com/oblador/react
 npm install @unpourtous/react-native-popup-stub --save
 ```
 
-## Usage
+## API Detail
+
+### PopupStub.init(_ref)
+Init PopupStub with PopupStub reference.
+| param | description | 
+| --- | --- |
+| _ref | should be the PopupStub component ref |
+
+### PopupStub.addPopup(component, option)
+Add popup to PopupStub, use option to controller actions for each Component/Layers.
+
+| param | type | description | 
+| --- | --- | --- |
+| component | Component | View component |
+| option | Object | Config for the view component | 
+| option.zIndex | Int | It likes `zIndex` in style, component with the same zIndex will be regard as the same layer, each layer show just one component a time. | 
+| mask | Boolean | show modal or not.
+
+
+
+
+
+
+## Example
 First, add PopupStub as sibling node of you Root Node
 ``` js
 export default class example extends Component {
