@@ -1,7 +1,7 @@
 {
-  "name": "@unpourtous/rn-seed",
-  "version": "1.0.2",
-  "description": "React Native component for both Android and iOS",
+  "name": "@unpourtous/react-native-popup-stub",
+  "version": "1.0.0",
+  "description": "A popup container for implements your own popups like ActionSheet, Dialog, Alert, Toast ...",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,11 @@
     "run-ios": "cd example; react-native run-ios; cd -"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "Popup",
+    "dialog",
+    "Alert",
+    "Toast"
   ],
   "author": "erichua",
   "license": "MIT",
