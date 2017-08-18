@@ -1,41 +1,72 @@
-# React Native Library Seed Project
+# react-native-popup-stub
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  
+  
+## Introduction 
+Popup global controller:
 
-## 0. Setup  
+- Handles popup animations
+- Remove old popup that has the same zIndex automatically
 
-``` shell
-gulp setup
+Derived from @unpourtous/react-native-stub-toast/PopupStub.
+
+## Installation 
 ```
-This task will check git&node version and install node modules.
-
-## 1. Run iOS  
-We use storybook to show our demo, start storybook and run ios project 
-
-``` shell 
-gulp run:storybook run:ios
-```
-
-## 2. Run Android  
-Almost the same as iOS
-``` shell 
-gulp run:storybook run:android
+npm install @unpourtous/react-native-popup-stub --save
 ```
 
-
-## 3. Develop
-
-#### 1. First, change code in `./lib`
-#### 2. Sync lib to example
-``` shell 
-gulp dev:syncLib
+## Usage
+First, add PopupStub as sibling node of you Root Node
+``` js
+export default class example extends Component {
+  render () {
+    return (
+      <View style={styles.container}>
+        {/* Your root node */} 
+        <TouchableHighlight
+          onPress={() => {
+            // Step three: Use Toast with static function
+            Toast.show('This is a Toast')
+            Toast.show('This is another Toast')
+          }}>
+          <Text>Show Toast</Text>
+        </TouchableHighlight>
+        
+        {/* Step One: Add popup stub */} 
+        <PopupStub ref={_ref => {
+          // Step Two: Init PopupStub itself
+          PopupStub.init(_ref)
+        }} />
+      </View>
+    )
+  }
+}
 ```
-This will delete the origin dir in `./example/node_modules` and reinstall this modules.
 
-## 4. All Tasks
-![image](https://user-images.githubusercontent.com/1309744/29419473-c9a6d0a6-83a1-11e7-93cf-0a1b95a0a3ed.png)
+Then, just push your popup instance to PopupStub
+```js
+export default class Toast extends Component {
+  static show(msg) {
+    const id = PopupStub.stub.addPopup(<Toast msg={msg} />, {
+      mask: false,
+      position: 'center',
+      zIndex: 500,
+      delay: 0,
+      duration: 100,
+      animation: 'fadeIn',
+      easing: 'ease'
+    })
+    // autoclose after 1.5s
+    setTimeout(() => {
+      PopupStub.stub.removePopup(id)
+    }, 1500)
+  }
+  
+  render () {
+    return <View style={{alignSelf:'center'}}><Text>{this.props.msg}</Text></View>
+  }
+}
+```
 
-
-## 5. TODO 
-- Add githook check for code style
-- Try Slush
+## License
+This library is distributed under MIT Licence.
