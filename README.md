@@ -1,5 +1,7 @@
 # react-native-popup-stub
 
+[![npm version](https://badge.fury.io/js/%40unpourtous%react-native-popup-stub.svg)](https://badge.fury.io/js/%40unpourtous%2Freact-native-popup-stub)
+
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  
   
 ## Introduction 
