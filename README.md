@@ -23,9 +23,10 @@ npm install @unpourtous/react-native-popup-stub --save
 
 ### PopupStub.init(_ref)
 Init PopupStub with PopupStub reference.
-| param | description | 
-| --- | --- |
-| _ref | should be the PopupStub component ref |
+
+| param | type | description | 
+| --- | --- | --- |
+| _ref | ref | should be the PopupStub component ref |
 
 ### PopupStub.addPopup(component, option)
 Add popup to PopupStub, use option to controller actions for each Component/Layers.
