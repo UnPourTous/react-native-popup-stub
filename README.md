@@ -10,6 +10,8 @@ Popup global controller:
 
 Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
+Animation is based on [react-native-animatable](https://github.com/oblador/react-native-animatable)
+
 ## Installation 
 ```
 npm install @unpourtous/react-native-popup-stub --save
@@ -46,7 +48,7 @@ export default class example extends Component {
 Then, just push your popup instance to PopupStub
 ```js
 export default class Toast extends Component {
-  static show(msg) {
+  static show (msg) {
     const id = PopupStub.stub.addPopup(<Toast msg={msg} />, {
       mask: false,
       position: 'center',
@@ -63,7 +65,11 @@ export default class Toast extends Component {
   }
   
   render () {
-    return <View style={{alignSelf:'center'}}><Text>{this.props.msg}</Text></View>
+    return (
+      <View style={{alignSelf:'center'}}>
+        <Text>{this.props.msg}</Text>
+      </View>
+    )
   }
 }
 ```
