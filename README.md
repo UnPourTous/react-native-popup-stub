@@ -34,13 +34,23 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | param | type | description | 
 | --- | --- | --- |
 | component | Component | View component |
-| option | Object | Config for the view component | 
-| option.zIndex | Int | It likes `zIndex` in style, component with the same zIndex will be regard as the same layer, each layer show just one component a time. | 
-| mask | Boolean | show modal or not.
+| option | Object | see below |
+| option.id | String | popup unique id, optional |
+| option.lock | Boolean | if true, it can't be closed, default false |
+| option.mask | Boolean | has a mask or not, default true |
+| option.zIndex | Integer | same as in css, the priority of popup, the bigger the higher | 
+| option.position | String | position of element in screen, available: left, right, top, bottom, center(defualt) |
+| option.wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
+| Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
 
+returns (String) unique id
 
+### PopupStub.removePopup(id)
+Invoke popup exiting animation and remove it on animation end
 
-
+| param | type | description | 
+| --- | --- | --- |
+| id | String | popup unique id
 
 
 ## Example
