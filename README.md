@@ -104,7 +104,7 @@ export default class Toast extends Component {
   render () {
     return (
       <View style={{backgroundColor: '#000', borderRadius: 5, padding: 15}}>
-        <Text>{this.props.msg}</Text>
+        <Text style={{color: '#fff', fontSize: 15}}>{this.props.msg}</Text>
       </View>
     )
   }
