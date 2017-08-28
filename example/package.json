@@ -8,9 +8,10 @@
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {
+    "@unpourtous/react-native-popup-stub": "file:../lib",
+    "babel-preset-es2015": "^6.24.1",
     "react": "16.0.0-alpha.6",
-    "react-native": "^0.43.3",
-    "@unpourtous/react-native-popup-stub": "file:../lib"
+    "react-native": "^0.43.3"
   },
   "jest": {
     "preset": "react-native"
