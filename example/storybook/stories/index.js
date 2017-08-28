@@ -1,12 +1,12 @@
-/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved, import/extensions */
+import React from 'react'
+import { storiesOf } from '@storybook/react-native'
+// import { action } from '@storybook/addon-actions'
+import { linkTo } from '@storybook/addon-links'
 
-import React from 'react';
-import { Text } from 'react-native';
+import Welcome from './Welcome'
+import ToastDemo from './Welcome/PopupDemo'
 
-import { storiesOf } from '@storybook/react-native';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-
-import Welcome from './Welcome';
-
-storiesOf('Welcome', module).add('RN-Library-Seed Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('PopupDemo', module)
+  .add('ActionSheet', () => <Welcome showApp={linkTo('Button')} />)
+  .add('Dialog', () => <Welcome showApp={linkTo('Button')} />)
+  .add('Toast', () => <ToastDemo showApp={linkTo('Button')} />)
