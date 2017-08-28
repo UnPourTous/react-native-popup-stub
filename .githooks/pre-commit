@@ -1,0 +1,3 @@
+#!/bin/sh
+git diff --name-only --cached --relative | grep '\(example\|lib\)/.*\.js$' | xargs ./node_modules/.bin/standard -v
+if [ $? -ne 0 ]; then exit 1; fi

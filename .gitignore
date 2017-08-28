@@ -1,4 +1,6 @@
 yarn-error.log
+npm-error.log
+npm-debug.log
 node_modules/
 example/node_modules/
 .idea/
