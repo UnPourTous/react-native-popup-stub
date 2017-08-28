@@ -1,6 +1,6 @@
 {
   "name": "lib-wrapper",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "lib wrapper",
   "main": "index.js",
   "private": true,
