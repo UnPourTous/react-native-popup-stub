@@ -41,21 +41,21 @@ gulp.task('publish:major', shell.task([
   'npm publish --access=public',
   'git push',
   'git push --tag',
-]))
+], {cwd: './lib'}))
 
 gulp.task('publish:minor', shell.task([
   'npm version minor',
   'npm publish --access=public',
   'git push',
   'git push --tag',
-]))
+], {cwd: './lib'}))
 
 gulp.task('publish:patch', shell.task([
   'npm version patch',
   'npm publish --access=public',
   'git push',
   'git push --tag',
-]))
+], {cwd: './lib'}))
 
 gulp.task('help', () => {
   console.log('\n------------------- React Native Library Seed Project -------------------')
