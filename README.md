@@ -36,10 +36,10 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | component | Component | View component |
 | option | Object | see below |
 | option.id | String | popup unique id, optional |
-| option.lock | Boolean | if true, it can't be closed, default false |
+| option.lock | Enum | nearly same as pointerEvents, by default, 'auto' if has a mask, otherwise 'box-none' |
 | option.mask | Boolean | has a mask or not, default true |
 | option.zIndex | Integer | same as in css, the priority of popup, the bigger the higher | 
-| option.position | String | position of element in screen, available: left, right, top, bottom, center(defualt) |
+| option.position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
 | option.wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
 | Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
 
@@ -54,7 +54,7 @@ Invoke popup exiting animation and remove it on animation end
 
 
 ## Example
-First, add PopupStub as sibling node of you Root Node
+First, add PopupStub as sibling node of your Root Node
 ``` js
 export default class example extends Component {
   render () {
@@ -73,7 +73,7 @@ export default class example extends Component {
         {/* Step One: Add popup stub */} 
         <PopupStub ref={_ref => {
           // Step Two: Init PopupStub itself
-          PopupStub.init(_ref)
+          if (_ref) PopupStub.init(_ref)
         }} />
       </View>
     )
@@ -86,6 +86,7 @@ Then, just push your popup instance to PopupStub
 export default class Toast extends Component {
   static show (msg) {
     const id = PopupStub.stub.addPopup(<Toast msg={msg} />, {
+      lock: 'none',
       mask: false,
       position: 'center',
       zIndex: 500,
@@ -102,8 +103,8 @@ export default class Toast extends Component {
   
   render () {
     return (
-      <View style={{alignSelf:'center'}}>
-        <Text>{this.props.msg}</Text>
+      <View style={{backgroundColor: '#000', borderRadius: 5, padding: 15}}>
+        <Text style={{color: '#fff', fontSize: 15}}>{this.props.msg}</Text>
       </View>
     )
   }
