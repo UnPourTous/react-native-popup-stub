@@ -7,8 +7,8 @@
 Popup global controller:
 
 - Handles popup animations
-- Regard the same `zIndex` components as same layer, remove old popup that has the same zIndex automatically
-- Make it easy too implement your own popup like Dialog, Toast, ActionSheet
+- Treats components with the same `zIndex` as same layer, removes old popup automatically
+- Makes it easy too implement your own popup like Dialog, Toast, ActionSheet
 
 Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
@@ -36,7 +36,7 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | component | Component | View component |
 | option | Object | see below |
 | option.id | String | popup unique id, optional |
-| option.lock | Enum | nearly same as pointerEvents, by default, 'auto' if has a mask, otherwise 'box-none' |
+| option.lock | Enum | popup layer lock mode, by default, 'auto' if has a mask, otherwise 'mask-only' |
 | option.mask | Boolean | has a mask or not, default true |
 | option.zIndex | Integer | same as in css, the priority of popup, the bigger the higher | 
 | option.position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
