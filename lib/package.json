@@ -1,6 +1,6 @@
 {
   "name": "@unpourtous/react-native-popup-stub",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A popup container for implements your own popups like ActionSheet, Dialog, Alert, Toast ...",
   "main": "index.js",
   "scripts": {
