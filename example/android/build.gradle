@@ -2,6 +2,9 @@
 
 buildscript {
     repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
         jcenter()
     }
     dependencies {
@@ -15,10 +18,13 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
-        jcenter()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
+        jcenter()
     }
 }
