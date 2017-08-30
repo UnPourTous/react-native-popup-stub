@@ -40,24 +40,18 @@ gulp.task('setup', ['check:git', 'check:node'], () => {
 gulp.task('publish:major', shell.task([
   'npm version major',
   'npm publish --access=public',
-  'git add package.json',
-  'git commit -m "update version"',
   'git push --follow-tags'
 ], {cwd: './lib'}))
 
 gulp.task('publish:minor', shell.task([
   'npm version minor',
   'npm publish --access=public',
-  'git add package.json',
-  'git commit -m "update version"',
   'git push --follow-tags'
 ], {cwd: './lib'}))
 
 gulp.task('publish:patch', shell.task([
   'npm version patch',
   'npm publish --access=public',
-  'git add package.json',
-  'git commit -m "update version"',
   'git push --follow-tags'
 ], {cwd: './lib'}))
 
