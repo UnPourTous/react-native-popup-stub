@@ -117,6 +117,7 @@ export default class Toast extends Component {
 - [ ] Support onAnimationEnd
 - [ ] Support onClose callback or so
 - [ ] Each popup an independent mask, rather than share a visual one
+- [ ] Add typescript declaration file for public api
 
 ## License
 This library is distributed under MIT Licence.
