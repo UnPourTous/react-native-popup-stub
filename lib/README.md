@@ -28,7 +28,7 @@ Init PopupStub with PopupStub reference.
 | --- | --- | --- |
 | _ref | ref | should be the PopupStub component ref |
 
-### PopupStub.addPopup(component, option)
+### PopupStub.stub.addPopup(component, option)
 Add popup to PopupStub, use option to controller actions for each Component/Layers.
 
 | param | type | description | 
@@ -45,7 +45,7 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 
 returns (String) unique id
 
-### PopupStub.removePopup(id)
+### PopupStub.stub.removePopup(id)
 Invoke popup exiting animation and remove it on animation end
 
 | param | type | description | 
@@ -110,6 +110,13 @@ export default class Toast extends Component {
   }
 }
 ```
+
+## TODO List
+
+- [ ] Enable reversing any valid animations
+- [ ] Support onAnimationEnd
+- [ ] Support onClose callback or so
+- [ ] Each popup an independent mask, rather than share a visual one
 
 ## License
 This library is distributed under MIT Licence.
