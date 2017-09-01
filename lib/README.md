@@ -2,8 +2,8 @@
 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-  
-## Introduction 
+
+## Introduction
 Popup global controller:
 
 - Handles popup animations
@@ -14,7 +14,7 @@ Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
 Animation is based on [react-native-animatable](https://github.com/oblador/react-native-animatable)
 
-## Installation 
+## Installation
 ```
 npm install @unpourtous/react-native-popup-stub --save
 ```
@@ -24,31 +24,31 @@ npm install @unpourtous/react-native-popup-stub --save
 ### PopupStub.init(_ref)
 Init PopupStub with PopupStub reference.
 
-| param | type | description | 
+| param | type | description |
 | --- | --- | --- |
 | _ref | ref | should be the PopupStub component ref |
 
-### PopupStub.stub.addPopup(component, option)
+### PopupStub.addPopup(component, option)
 Add popup to PopupStub, use option to controller actions for each Component/Layers.
 
-| param | type | description | 
+| param | type | description |
 | --- | --- | --- |
 | component | Component | View component |
 | option | Object | see below |
 | option.id | String | popup unique id, optional |
 | option.lock | Enum | popup layer lock mode, by default, 'auto' if has a mask, otherwise 'mask-only' |
 | option.mask | Boolean | has a mask or not, default true |
-| option.zIndex | Integer | same as in css, the priority of popup, the bigger the higher | 
+| option.zIndex | Integer | same as in css, the priority of popup, the bigger the higher |
 | option.position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
 | option.wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
 | Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
 
 returns (String) unique id
 
-### PopupStub.stub.removePopup(id)
+### PopupStub.removePopup(id)
 Invoke popup exiting animation and remove it on animation end
 
-| param | type | description | 
+| param | type | description |
 | --- | --- | --- |
 | id | String | popup unique id
 
@@ -60,7 +60,7 @@ export default class example extends Component {
   render () {
     return (
       <View style={styles.container}>
-        {/* Your root node */} 
+        {/* Your root node */}
         <TouchableHighlight
           onPress={() => {
             // Step three: Use Toast with static function
@@ -69,8 +69,8 @@ export default class example extends Component {
           }}>
           <Text>Show Toast</Text>
         </TouchableHighlight>
-        
-        {/* Step One: Add popup stub */} 
+
+        {/* Step One: Add popup stub */}
         <PopupStub ref={_ref => {
           // Step Two: Init PopupStub itself
           if (_ref) PopupStub.init(_ref)
@@ -85,7 +85,7 @@ Then, just push your popup instance to PopupStub
 ```js
 export default class Toast extends Component {
   static show (msg) {
-    const id = PopupStub.stub.addPopup(<Toast msg={msg} />, {
+    const id = PopupStub.addPopup(<Toast msg={msg} />, {
       lock: 'none',
       mask: false,
       position: 'center',
@@ -97,10 +97,10 @@ export default class Toast extends Component {
     })
     // autoclose after 1.5s
     setTimeout(() => {
-      PopupStub.stub.removePopup(id)
+      PopupStub.removePopup(id)
     }, 1500)
   }
-  
+
   render () {
     return (
       <View style={{backgroundColor: '#000', borderRadius: 5, padding: 15}}>
@@ -111,12 +111,14 @@ export default class Toast extends Component {
 }
 ```
 
-## TODO List
+## Todo
 
 - [ ] Enable reversing any valid animations
 - [ ] Support onAnimationEnd
 - [ ] Support onClose callback or so
-- [ ] Each popup an independent mask, rather than share a visual one
+- [x] Each popup an independent mask, rather than share a visual one
+- [ ] Enable mask animation
+- [ ] Enable remove animation in android
 
 ## License
 This library is distributed under MIT Licence.
