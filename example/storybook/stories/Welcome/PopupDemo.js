@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import React, { Component } from 'react'
 import { PopupStub } from '@unpourtous/react-native-popup-stub'
-import { Toast, Dialog, ActionSheet } from '../components/Toast'
+import { Toast, Dialog, ActionSheet } from '../components'
 
 export default class extends Component {
   render () {
@@ -37,6 +37,7 @@ export default class extends Component {
   }
 
   showToast () {
+    console.log('showToast')
     const toastId = PopupStub.stub && PopupStub.stub.addPopup(<Toast msg={'test message'} />, {
       mask: false,
       position: 'center',
