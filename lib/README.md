@@ -21,6 +21,13 @@ npm install @unpourtous/react-native-popup-stub --save
 
 ## API Detail
 
+### Props
+PopupStub properties
+
+| param | type | description |
+| --- | --- | --- |
+| maskColor | String | mask color, default 'rgba(23,26,35,0.6)' |
+
 ### PopupStub.init(_ref)
 Init PopupStub with PopupStub reference.
 
@@ -35,15 +42,18 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | --- | --- | --- |
 | component | Component | View component |
 | option | Object | see below |
-| option.id | String | popup unique id, optional |
-| option.lock | Enum | popup layer lock mode, by default, 'auto' if has a mask, otherwise 'mask-only' |
-| option.mask | Boolean | has a mask or not, default true |
-| option.zIndex | Integer | same as in css, the priority of popup, the bigger the higher |
-| option.position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
-| option.wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
+| .id | String | popup unique id, optional |
+| .mask | Boolean | has a visual mask or not, default true |
+| .autoClose | Boolean | enable clicking mask to close or not, default true |
+| .enableClickThrough | Boolean | blank erea (of container) may click through or not, default false |
+| .zIndex | Integer | same as in css, the priority of popup, the bigger the higher |
+| .position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
+| .wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
 | Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
 
 returns (String) unique id
+
+**warning**: `lock` is deprecated from `v1.1.0` on, but still valid for a few versions. Use `autoClose` and `enableClickThrough` instead.
 
 ### PopupStub.removePopup(id)
 Invoke popup exiting animation and remove it on animation end
@@ -86,8 +96,8 @@ Then, just push your popup instance to PopupStub
 export default class Toast extends Component {
   static show (msg) {
     const id = PopupStub.addPopup(<Toast msg={msg} />, {
-      lock: 'none',
       mask: false,
+      enableClickThrough: true,
       position: 'center',
       zIndex: 500,
       delay: 0,
@@ -113,12 +123,11 @@ export default class Toast extends Component {
 
 ## Todo
 
-- [ ] Enable reversing any valid animations
-- [ ] Support onAnimationEnd
-- [ ] Support onClose callback or so
 - [x] Each popup an independent mask, rather than share a visual one
+- [ ] Support popup life circle callback or so
 - [ ] Enable mask animation
 - [ ] Enable remove animation in android
+- [ ] Enable reversing any valid animations
 
 ## License
 This library is distributed under MIT Licence.
