@@ -1,18 +1,38 @@
 const gulp = require('gulp')
 const chalk = require('chalk')
-const install = require('gulp-install')
 const shell = require('gulp-shell')
-
+const execSync = require('child_process').execSync;
 const libPackageInfo = require('./lib/package.json')
-console.log(libPackageInfo.name)
+const envVersion = require('./package.json').envVersion
+const compare = require('node-version-compare');
 
-gulp.task('check:node', shell.task([
-  'if [[ !`node --version | cut -d "v" -f 2 | sed -e "s/ //g"` < "7.0.0" ]]; then echo "node version 7 is preferred"; fi'
-]))
+gulp.task('check:node', () => {
+  const checkCmdExisted = execSync('if ! [ -x "$(command -v node)" ]; then echo "0"; else echo "-1"; fi')
+  if (!checkCmdExisted.toString() === '-1') {
+    console.log('nodejs not installed')
+    process.exit()
+  }
+  const version = execSync('node --version | cut -d " " -f 3 | sed -e "s/[ |v]//g"')
+  const versionStr = version.toString()
+  if (compare(versionStr, envVersion.nodejs.min) < 0) {
+    console.warn('nodejs should be at least ' + envVersion.nodejs.min + ', current ' + versionStr)
+    process.exit()
+  }
+})
 
-gulp.task('check:git', shell.task([
-  'if [[ !`git --version | cut -d " " -f 3 | sed -e "s/ //g"` < "2.9.0" ]]; then echo "git version should greate than 2.9.0 which supoorts our githook"; fi'
-]))
+gulp.task('check:git', () => {
+  const checkCmdExisted = execSync('if ! [ -x "$(command -v git)" ]; then echo "0"; else echo "-1"; fi')
+  if (!checkCmdExisted.toString() === '-1') {
+    console.log('git not installed')
+    process.exit()
+  }
+  const version = execSync('git --version | cut -d " " -f 3 | sed -e "s/ //g"')
+  const versionStr = version.toString()
+  if (compare(versionStr, envVersion.git.min) < 0) {
+    console.warn('git should be at least ' + envVersion.git.min + ', current ' + versionStr)
+    process.exit()
+  }
+})
 
 gulp.task('dev:syncLib', shell.task([
   'rm -rf node_modules/' + libPackageInfo.name,
@@ -31,10 +51,11 @@ gulp.task('run:ios', shell.task([
   'react-native run-ios'
 ], {cwd: './example'}))
 
-gulp.task('setup', ['check:git', 'check:node'], () => {
+gulp.task('setup', ['check:node', 'check:git'], () => {
   shell('git config core.hooksPath ./.githooks')
+  const install = require('gulp-install')
   return gulp.src(['./lib/package.json', 'example/package.json'])
-   .pipe(install('npm install '))
+   .pipe(install())
 })
 
 gulp.task('publish:major', shell.task([
