@@ -38,8 +38,9 @@ export default class extends Component {
 
   showToast () {
     console.log('showToast')
-    const toastId = PopupStub.stub && PopupStub.stub.addPopup(<Toast msg={'test message'} />, {
+    const toastId = PopupStub.addPopup(<Toast msg={'test message'} />, {
       mask: false,
+      enableClickThrough: true,
       position: 'center',
       zIndex: 500,
       delay: 0,
@@ -49,15 +50,15 @@ export default class extends Component {
     })
 
     setTimeout(() => {
-      PopupStub.stub.removePopup(toastId)
+      PopupStub.removePopup(toastId)
     }, 2000)
   }
 
   showDialog () {
-    const dialogId = PopupStub.stub && PopupStub.stub.addPopup(<Dialog msg={'test message'} />, {
+    const dialogId = PopupStub.addPopup(<Dialog msg={'test message'} />, {
       mask: false,
       position: 'center',
-      zIndex: 500,
+      zIndex: 100,
       delay: 0,
       duration: 1000,
       animation: 'fadeIn',
