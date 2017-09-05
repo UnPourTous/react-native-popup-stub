@@ -27,6 +27,7 @@ PopupStub properties
 | param | type | description |
 | --- | --- | --- |
 | maskColor | String | mask color, default 'rgba(23,26,35,0.6)' |
+| zIndex | Integer | zIndex for PopupStub (>= 0), default 999 |
 
 ### PopupStub.init(_ref)
 Init PopupStub with PopupStub reference.
@@ -46,7 +47,7 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | .mask | Boolean | has a visual mask or not, default true |
 | .autoClose | Boolean | enable clicking mask to close or not, default true |
 | .enableClickThrough | Boolean | blank erea (of container) may click through or not, default false |
-| .zIndex | Integer | same as in css, the priority of popup, the bigger the higher |
+| .zIndex | Integer | priority of each popup in PopupStub, the bigger the higher |
 | .position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
 | .wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
 | Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
@@ -60,8 +61,7 @@ Invoke popup exiting animation and remove it on animation end
 
 | param | type | description |
 | --- | --- | --- |
-| id | String | popup unique id
-
+| id | String | popup unique id |
 
 ## Example
 First, add PopupStub as sibling node of your Root Node
