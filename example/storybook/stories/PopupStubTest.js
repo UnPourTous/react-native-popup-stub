@@ -32,7 +32,9 @@ const PopupView = () => <View style={{width: 100, height: 100, backgroundColor: 
 const genTestCases = (attrName, attrValues) => {
   return attrValues.map(attrValue => ({
     title: `addPopup (${attrName}=${attrValue})`,
-    action: () => PopupStub.stub.addPopup(<PopupView />, { [attrName]: attrValue })
+    action: () => {
+      PopupStub.stub.addPopup(<PopupView />, { duration: 200, [attrName]: attrValue })
+    }
   }))
 }
 
