@@ -6,9 +6,9 @@
 ## Introduction
 Popup global controller:
 
-- Handles popup animations
-- Treats components with the same `zIndex` as same layer, removes old popup automatically
-- Makes it easy too implement your own popup like Dialog, Toast, ActionSheet
+- Handle popup animations
+- Remove old popup with the same `zIndex` automatically (this one may change)
+- Make it easy to implement your own popup like Dialog, Toast, ActionSheet
 
 Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
@@ -128,6 +128,7 @@ export default class Toast extends Component {
 - [ ] Enable mask animation
 - [ ] Enable remove animation in android
 - [ ] Enable reversing any valid animations
+- [ ] Enable to close popup with same zIndex by configuration
 
 ## License
 This library is distributed under MIT Licence.
