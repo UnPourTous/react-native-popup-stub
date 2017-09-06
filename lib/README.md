@@ -121,6 +121,65 @@ export default class Toast extends Component {
 }
 ```
 
+```js
+export default class ActionSheet extends Component {
+  static _id
+
+  static show (choices) {
+    ActionSheet._id = PopupStub.addPopup(<ActionSheet choices={choices} />, {
+      mask: true,
+      zIndex: 300,
+      delay: 0,
+      duration: 100,
+      animation: {from: {translateY: 300}, to: {translateY: 0}},
+      easing: 'ease',
+      position: 'bottom',
+      // or the same, 100% width at the bottom of screen
+      // position: 'none',
+      // wrapperStyle: {position: 'absolute', left: 0, right: 0, bottom: 0}
+    })
+  }
+
+  static hide () {
+    PopupStub.removePopup(ActionSheet._id)
+  }
+
+  render () {
+    // as for demo, we ignore property choices here
+    return (
+      <View style={{backgroundColor: 'gray'}}>
+        <View style={styles.btn}>
+          <Text style={{fontSize: 16}}>Option 1</Text>
+        </View>
+        <View style={[styles.btn, styles.line]}>
+          <Text style={{fontSize: 16}}>Option 2</Text>
+        </View>
+        <View style={[styles.btn, styles.line]}>
+          <Text style={{fontSize: 16}}>Option 3</Text>
+        </View>
+
+        <View style={[styles.btn, {marginTop: 10}]}>
+          <Text style={{fontSize: 16, color: 'gray'}} onPress={() => ActionSheet.hide()}>Cancel</Text>
+        </View>
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  btn: {
+    backgroundColor: 'white',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  line: {
+    borderColor: '#ddd',
+    borderTopWidth: 1
+  }
+})
+```
+
 ## Todo
 
 - [x] Each popup an independent mask, rather than share a visual one
