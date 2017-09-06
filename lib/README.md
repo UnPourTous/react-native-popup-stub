@@ -93,6 +93,8 @@ export default class example extends Component {
 
 Then, just push your popup instance to PopupStub
 ```js
+// Toast.js
+
 export default class Toast extends Component {
   static show (msg) {
     const id = PopupStub.addPopup(<Toast msg={msg} />, {
@@ -122,6 +124,8 @@ export default class Toast extends Component {
 ```
 
 ```js
+// ActionSheet.js
+
 export default class ActionSheet extends Component {
   static _id
 
@@ -131,7 +135,7 @@ export default class ActionSheet extends Component {
       zIndex: 300,
       delay: 0,
       duration: 100,
-      animation: {from: {translateY: 300}, to: {translateY: 0}},
+      animation: {from: {translateY: 210}, to: {translateY: 0}},
       easing: 'ease',
       position: 'bottom',
       // or the same, 100% width at the bottom of screen
