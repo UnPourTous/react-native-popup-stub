@@ -36,7 +36,7 @@ gulp.task('check:git', () => {
 
 gulp.task('dev:syncLib', shell.task([
   'rm -rf node_modules/' + libPackageInfo.name,
-  'yarn '
+  'npm install'
 ], {cwd: './example', ignoreErrors: true}))
 
 gulp.task('run:storybook', shell.task([
