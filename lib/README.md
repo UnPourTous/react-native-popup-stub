@@ -14,6 +14,9 @@ Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
 Animation is based on [react-native-animatable](https://github.com/oblador/react-native-animatable)
 
+### Demo
+![demo](https://user-images.githubusercontent.com/1309744/30198225-2636557c-949f-11e7-8bda-b2a72b7ad91e.gif)
+
 ## Installation
 ```
 npm install @unpourtous/react-native-popup-stub --save
