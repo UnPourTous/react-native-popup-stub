@@ -17,7 +17,9 @@
     "eslint-plugin-standard": "^2.3.1",
     "gulp": "^3.9.1",
     "gulp-install": "^1.1.0",
+    "gulp-json-editor": "^2.2.1",
     "gulp-shell": "^0.6.3",
+    "inquirer": "^3.2.3",
     "node-version-compare": "^1.0.1",
     "standard": "^10.0.3"
   },

@@ -1,10 +1,13 @@
 const gulp = require('gulp')
 const chalk = require('chalk')
 const shell = require('gulp-shell')
-const execSync = require('child_process').execSync;
+const execSync = require('child_process').execSync
 const libPackageInfo = require('./lib/package.json')
+const examplePackageInfo = require('./example/package.json')
 const envVersion = require('./package.json').envVersion
-const compare = require('node-version-compare');
+const compare = require('node-version-compare')
+const jeditor = require('gulp-json-editor')
+const inquirer = require('inquirer')
 
 gulp.task('check:node', () => {
   const checkCmdExisted = execSync('if ! [ -x "$(command -v node)" ]; then echo "0"; else echo "-1"; fi')
@@ -58,6 +61,31 @@ gulp.task('setup', ['check:node', 'check:git'], () => {
    .pipe(install())
 })
 
+gulp.task('setName', () => {
+  inquirer.prompt([{
+    type: 'input',
+    name: 'name',
+    message: 'Please input library name: '
+  }]).then(function (result) {
+    if (result.name) {
+      delete examplePackageInfo.dependencies[libPackageInfo.name]
+      const newDeps = Object.assign({}, examplePackageInfo.dependencies)
+      console.log(libPackageInfo.name)
+      console.log(examplePackageInfo.dependencies)
+      gulp.src('./example/package.json')
+        .pipe(jeditor({
+          dependencies: Object.assign({}, newDeps, {[result.name]: 'file:../lib'})
+        }))
+        .pipe(gulp.dest('./example/'))
+      gulp.src('./lib/package.json')
+        .pipe(jeditor({
+          'name': result.name
+        }))
+        .pipe(gulp.dest('./lib/'))
+    }
+  })
+})
+
 gulp.task('publish:major', shell.task([
   'npm version major',
   'npm publish --access=public',
@@ -78,6 +106,7 @@ gulp.task('publish:patch', shell.task([
 
 gulp.task('help', () => {
   console.log('\n------------------- React Native Library Seed Project -------------------')
+  console.log(chalk.green('setName'), 'set library name')
   console.log(chalk.green('setup'), 'setup project init environment')
 
   console.log('')
