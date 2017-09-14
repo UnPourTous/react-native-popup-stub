@@ -1,16 +1,16 @@
 import react, {Component} from 'react'
+import {ViewProperties} from 'react-native'
 
-export interface PopupStub {
-}
+export interface PopupStub extends Component<ViewProperties> { }
 
 type UUID = string
 
 type PopupStubOption = {
   id?: UUID,
-  lock: 'auto' | 'mask-only' | 'all' | 'none' = 'auto' | 'mask-only',
-  mask: boolean = true,
-  zIndex: number = 1,
-  position: 'center' | 'none' | 'top' | 'right' | 'bottom' | 'left' = 'center',
+  lock: 'auto' | 'mask-only' | 'all' | 'none',
+  mask: boolean,
+  zIndex: number,
+  position: 'center' | 'none' | 'top' | 'right' | 'bottom' | 'left',
   wrapperStyle: object
 }
 
@@ -58,9 +58,9 @@ export interface PopupStubStatic {
    * Remove specified popup with animation
    * 
    * @param {UUID} id 
-   * @param {boolean} [forceUpdate=true] 
+   * @param {boolean} [forceUpdate=true] default true
    */
-  removePopup(id: UUID, forceUpdate = true): void
+  removePopup(id: UUID, forceUpdate?: string): void
 
   /**
    * Remove specified popup without animation
