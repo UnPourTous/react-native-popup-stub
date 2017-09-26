@@ -30,7 +30,7 @@ PopupStub properties
 | param | type | description |
 | --- | --- | --- |
 | maskColor | String | mask color, default 'rgba(23,26,35,0.6)' |
-| zIndex | Integer | zIndex for PopupStub (>= 0), default 999 |
+| orientation | Enum | device orientation, available: LANDSCAPE, PORTRAIT (default) |
 
 ### PopupStub.init(_ref)
 Init PopupStub with PopupStub reference.
@@ -50,14 +50,18 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | .mask | Boolean | has a visual mask or not, default true |
 | .autoClose | Boolean | enable clicking mask to close or not, default true |
 | .enableClickThrough | Boolean | blank erea (of container) may click through or not, default false |
+| .visible | Boolean | whether to render this popup, default true |
 | .zIndex | Integer | priority of each popup in PopupStub, the bigger the higher |
-| .position | String | position of element in screen, available: none, left, right, top, bottom, center(defualt) |
+| .position | Enum | position of element in screen, available: none, left, right, top, bottom, center (defualt) |
 | .wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
 | Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
 
 returns (String) unique id
 
-**warning**: `lock` is deprecated from `v1.1.0` on, but still valid for a few versions. Use `autoClose` and `enableClickThrough` instead.
+**warning**:
+
+- `lock` is deprecated from `v1.1.0` on, but still valid for a few versions. Use `autoClose` and `enableClickThrough` instead.
+- If your app supports landscape, you may need to set `orientation`, see [howto](https://corbt.com/posts/2016/03/16/detecting-orientation-in-react-native.html)
 
 ### PopupStub.removePopup(id)
 Invoke popup exiting animation and remove it on animation end
@@ -84,7 +88,7 @@ export default class example extends Component {
         </TouchableHighlight>
 
         {/* Step One: Add popup stub */}
-        <PopupStub ref={_ref => {
+        <PopupStub maskColor='rgba(0,0,0,0.75)' ref={_ref => {
           // Step Two: Init PopupStub itself
           if (_ref) PopupStub.init(_ref)
         }} />
