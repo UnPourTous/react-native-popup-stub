@@ -30,7 +30,7 @@ PopupStub properties
 | param | type | description |
 | --- | --- | --- |
 | maskColor | String | mask color, default 'rgba(23,26,35,0.6)' |
-| orientation | Enum | device orientation, available: LANDSCAPE, PORTRAIT (default) |
+| orientation | Enum | deprecated, no need any more |
 
 ### PopupStub.init(_ref)
 Init PopupStub with PopupStub reference.

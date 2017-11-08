@@ -2,8 +2,7 @@ import react, {Component} from 'react'
 import {ViewProperties} from 'react-native'
 
 export interface PopupStub extends Component<ViewProperties> {
-  maskColor: string,
-  orientation: 'LANDSCAPE' | 'PORTRAIT'
+  maskColor: string
 }
 
 type UUID = string
