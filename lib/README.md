@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
 - [x] Each popup an independent mask, rather than share a visual one
 - [ ] Support popup life circle callback or so
 - [ ] Enable mask animation
-- [ ] Enable remove animation in android
+- [x] Enable remove animation in android
 - [ ] Enable reversing any valid animations
 - [ ] Enable to close popup with same zIndex by configuration
 
