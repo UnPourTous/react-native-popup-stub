@@ -4,11 +4,13 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Introduction
+
 Popup global controller:
 
 - Handle popup animations
-- Remove old popup with the same `zIndex` automatically (this one may change)
+- Remove old popup with the same `zIndex` automatically
 - Make it easy to implement your own popup like Dialog, Toast, ActionSheet
+- Support landscape and portrait automatically
 
 Derived from @unpourtous/react-native-stub-toast/PopupStub.
 
@@ -25,6 +27,7 @@ npm install @unpourtous/react-native-popup-stub --save
 ## API Detail
 
 ### Props
+
 PopupStub properties
 
 | param | type | description |
@@ -32,14 +35,16 @@ PopupStub properties
 | maskColor | String | mask color, default 'rgba(23,26,35,0.6)' |
 | orientation | Enum | deprecated, no need any more |
 
-### PopupStub.init(_ref)
+### PopupStub.init(ref)
+
 Init PopupStub with PopupStub reference.
 
 | param | type | description |
 | --- | --- | --- |
-| _ref | ref | should be the PopupStub component ref |
+| ref | ref | should be the PopupStub component reference |
 
 ### PopupStub.addPopup(component, option)
+
 Add popup to PopupStub, use option to controller actions for each Component/Layers.
 
 | param | type | description |
@@ -47,6 +52,7 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | component | Component | View component |
 | option | Object | see below |
 | .id | String | popup unique id, optional |
+| .lock | Enum | deprecated since `v1.1.0` |
 | .mask | Boolean | has a visual mask or not, default true |
 | .autoClose | Boolean | enable clicking mask to close or not, default true |
 | .enableClickThrough | Boolean | blank erea (of container) may click through or not, default false |
@@ -58,12 +64,9 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 
 returns (String) unique id
 
-**warning**:
-
-- `lock` is deprecated from `v1.1.0` on, but still valid for a few versions. Use `autoClose` and `enableClickThrough` instead.
-- If your app supports landscape, you may need to set `orientation`, see [howto](https://corbt.com/posts/2016/03/16/detecting-orientation-in-react-native.html)
 
 ### PopupStub.removePopup(id)
+
 Invoke popup exiting animation and remove it on animation end
 
 | param | type | description |
@@ -71,6 +74,7 @@ Invoke popup exiting animation and remove it on animation end
 | id | String | popup unique id |
 
 ## Example
+
 First, add PopupStub as sibling node of your Root Node
 ``` js
 export default class example extends Component {
