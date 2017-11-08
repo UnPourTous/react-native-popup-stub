@@ -33,6 +33,7 @@ PopupStub properties
 | param | type | description |
 | --- | --- | --- |
 | maskColor | String | mask color, default 'rgba(23,26,35,0.6)' |
+| maskAnimatable | Boolean | whether enable mask animation, default false |
 | orientation | Enum | deprecated, no need any more |
 
 ### PopupStub.init(ref)
@@ -54,12 +55,14 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | .id | String | popup unique id, optional |
 | .lock | Enum | deprecated since `v1.1.0` |
 | .mask | Boolean | has a visual mask or not, default true |
+| .maskDuration | Integer | duration of mask animation (if enabled) |
 | .autoClose | Boolean | enable clicking mask to close or not, default true |
 | .enableClickThrough | Boolean | blank erea (of container) may click through or not, default false |
 | .visible | Boolean | whether to render this popup, default true |
 | .zIndex | Integer | priority of each popup in PopupStub, the bigger the higher |
 | .position | Enum | position of element in screen, available: none, left, right, top, bottom, center (defualt) |
 | .wrapperStyle | Object | animation wrapper style (each popup is wrapped in an Animatable.View) |
+| .closingAnimation | Animation | by default, reversed animation |
 | Animatable.props | -- | see [Animatable.props](https://github.com/oblador/react-native-animatable), direction and onAnimationEnd are reserved |
 
 returns (String) unique id
@@ -199,7 +202,7 @@ const styles = StyleSheet.create({
 
 - [x] Each popup an independent mask, rather than share a visual one
 - [ ] Support popup life circle callback or so
-- [ ] Enable mask animation
+- [x] Enable mask animation
 - [x] Enable remove animation in android
 - [ ] Enable reversing any valid animations
 - [ ] Enable to close popup with same zIndex by configuration

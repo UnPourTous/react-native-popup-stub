@@ -2,7 +2,8 @@ import react, {Component} from 'react'
 import {ViewProperties} from 'react-native'
 
 export interface PopupStub extends Component<ViewProperties> {
-  maskColor: string
+  maskColor: string,
+  maskAnimatable: boolean
 }
 
 type UUID = string
@@ -11,13 +12,24 @@ type UUID = string
 
 type PopupStubOption = {
   id?: UUID,
-  autoClose: boolean,
-  enableClickThrough: boolean,
-  mask: boolean,
-  visible: boolean,
+  // priority
   zIndex: number,
-  position: 'center' | 'none' | 'top' | 'right' | 'bottom' | 'left',
-  wrapperStyle: object
+  // animation related
+  animation?: string | object,
+  closingAnimation?: string | object,
+  delay?: number,
+  duration?: number,
+  direction?: 'normal' | 'reverse' | 'alternate'| 'alternate-reverse',
+  easing?: string,
+  // interactive related
+  autoClose?: boolean,
+  enableClickThrough?: boolean,
+  mask?: boolean,
+  maskDuration?: number,
+  visible?: boolean,
+  // style related
+  position?: 'center' | 'none' | 'top' | 'right' | 'bottom' | 'left',
+  wrapperStyle?: object
 }
 
 /**
