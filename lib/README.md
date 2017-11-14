@@ -53,11 +53,11 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | component | Component | View component |
 | option | Object | see below |
 | .id | String | popup unique id, optional |
-| .lock | Enum | deprecated since `v1.1.0` |
+| .lock | Boolean | when locked, it will stop all clicks, default false |
 | .mask | Boolean | has a visual mask or not, default true |
 | .maskDuration | Integer | duration of mask animation (if enabled) |
 | .autoClose | Boolean | enable clicking mask to close or not, default true |
-| .enableClickThrough | Boolean | blank erea (of container) may click through or not, default false |
+| .enableClickThrough | Boolean | deprecated, use `lock` instead |
 | .visible | Boolean | whether to render this popup, default true |
 | .zIndex | Integer | priority of each popup in PopupStub, the bigger the higher |
 | .position | Enum | position of element in screen, available: none, left, right, top, bottom, center (defualt) |
@@ -67,6 +67,7 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 
 returns (String) unique id
 
+*lock* changed a lot, from `Enum` to `Boolean`.
 
 ### PopupStub.removePopup(id)
 
@@ -113,7 +114,6 @@ export default class Toast extends Component {
   static show (msg) {
     const id = PopupStub.addPopup(<Toast msg={msg} />, {
       mask: false,
-      enableClickThrough: true,
       position: 'center',
       zIndex: 500,
       delay: 0,

@@ -23,7 +23,7 @@ type PopupStubOption = {
   easing?: string,
   // interactive related
   autoClose?: boolean,
-  enableClickThrough?: boolean,
+  lock?: boolean,
   mask?: boolean,
   maskDuration?: number,
   visible?: boolean,
