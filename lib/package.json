@@ -34,7 +34,7 @@
     "standard": "^9.0.0"
   },
   "dependencies": {
-    "react-native-animatable": "^1.2.3",
+    "react-native-animatable": "https://github.com/UnPourTous/react-native-animatable.git#v1.2.5",
     "uuid": "^3.1.0"
   },
   "peerDependencies": {
