@@ -3,7 +3,8 @@ import {ViewProperties} from 'react-native'
 
 export interface PopupStub extends Component<ViewProperties> {
   maskColor: string,
-  maskAnimatable: boolean
+  maskAnimatable: boolean,
+  stub?: Component
 }
 
 type UUID = string
