@@ -1,4 +1,4 @@
-import react, {Component} from 'react'
+import react, {Component, ReactElement} from 'react'
 import {ViewProperties} from 'react-native'
 
 export interface PopupStub extends Component<ViewProperties> {
@@ -68,11 +68,11 @@ export interface PopupStubStatic {
   /**
    * Show popup to display passed in content view according to options
    *
-   * @param {Component} reactElement A react component
+   * @param {ReactElement} reactElement A react element 
    * @param {PopupStubOption} options options
    * @returns {UUID} return a unique id to indentify the added PopupStub instance
    */
-  addPopup(reactElement: Component, options: PopupStubOption): UUID
+  addPopup(reactElement: ReactElement<any>, options: PopupStubOption): UUID
 
   /**
    * Remove specified popup with animation
