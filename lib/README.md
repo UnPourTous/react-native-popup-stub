@@ -57,6 +57,7 @@ Add popup to PopupStub, use option to controller actions for each Component/Laye
 | .mask | Boolean | has a visual mask or not, default true |
 | .maskDuration | Integer | duration of mask animation (if enabled) |
 | .autoClose | Boolean | enable clicking mask to close or not, default true |
+| .closeCallback | Function | when close, it will support close callback |
 | .enableClickThrough | Boolean | deprecated, use `lock` instead |
 | .visible | Boolean | whether to render this popup, default true |
 | .zIndex | Integer | priority of each popup in PopupStub, the bigger the higher |
