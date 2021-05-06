@@ -1924,9 +1924,10 @@ react-deep-force-update@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.0.tgz#8d131ae07ae02f08df60744eb2cf2de4fcb325f1"
 
-react-native-animatable@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.3.tgz#d0f0bd694833b934f3aaa1275739228b786ecb4b"
+"react-native-animatable@https://github.com/UnPourTous/react-native-animatable.git#v1.2.5":
+  version "1.2.4"
+  uid a759c7119014b3fda8a98af166667cf40d2fec24
+  resolved "https://github.com/UnPourTous/react-native-animatable.git#a759c7119014b3fda8a98af166667cf40d2fec24"
   dependencies:
     prop-types "^15.5.10"
 
@@ -2288,8 +2289,8 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 ua-parser-js@^0.7.9:
-  version "0.7.14"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.14.tgz#110d53fa4c3f326c121292bbeac904d2e03387ca"
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
 
 uniq@^1.0.1:
   version "1.0.1"
